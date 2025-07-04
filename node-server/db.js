@@ -1,5 +1,5 @@
-const { localpool } = require('pg');
-const { Pool } = require("pg");
+//const { pool } = require('pg');
+//const { Pool } = require("pg");
 const jsonToTable = require('json-to-table');
 
 const { Pool } = require("pg");
