@@ -1,6 +1,5 @@
 const { Pool } = require("pg");
-const jsonToTable = require("json-to-table");
-const steal_cookie = require("./steal_cookie.js");
+const jsonToTable = require("/json-to-table");
 
 const pool = new Pool({
   user: process.env.DB_USER,
